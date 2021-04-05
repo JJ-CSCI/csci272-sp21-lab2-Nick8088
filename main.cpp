@@ -8,10 +8,61 @@
 enum class Compass {N, S, W, E};
 
 // Write your code here
-class GPS {
-
+class GPS{
+double latitude;
+Compass latitudeDir;
+ double longitude;
+Compass longitudeDir;
+ public:
+ double getLatitude(){
+return latitude;
+}
+ Compass getLatitudeDirection(){
+ return latitudeDir;
+ }
+ double getLongitude(){
+ return longitude;
+}
+Compass getLongitudeDirection(){
+return longitudeDir;
+}
+ GPS(){
+ latitude = 0;
+ longitude = 0;
+ latitudeDir = Compass::N;
+ longitudeDir = Compass::W;
+ }
+ GPS(double latitude, double longitude){
+ if(latitude>=0 && latitude<=90)
+ this->latitude = latitude;
+ else
+ this->latitude = 0;
+ if(longitude>=0 && longitude<=180)
+ this->longitude = longitude;
+ else
+ this->longitude = 0;
+ latitudeDir = Compass::N;
+ longitudeDir = Compass::W;
+}
+GPS(double latitude, double longitude, Compass latitudeDir, Compass longitudeDir){
+ if(latitude>=0 && latitude<=90){
+ this->latitude = latitude;
+this->latitudeDir = latitudeDir;
+}
+else{
+this->latitude = 0;
+this->latitudeDir = Compass::N;
+}
+if(longitude>=0 && longitude<=180){
+this->longitude = longitude;
+this->longitudeDir = longitudeDir;   
+}
+else{
+this->longitude = 0;
+this->longitudeDir = Compass::W;
+}
+}
 };
-
 //------------------------------
 //   DO NOT MODIFY TEST CASES
 //------------------------------
